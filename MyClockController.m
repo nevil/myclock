@@ -61,7 +61,7 @@
 
 - (void)timer:(NSTimer *)timer
 {
-    NSLog(@"timer fired");
+//    NSLog(@"timer fired");
     [self setTimeInTitle];
 }
 
