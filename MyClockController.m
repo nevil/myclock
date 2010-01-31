@@ -3,7 +3,7 @@
 //  MyClock
 //
 //  Created by Anders Hasselqvist on 4/30/06.
-//  Copyright 2006, 2009 Anders Hasselqvist. All rights reserved.
+//  Copyright 2006, 2009-2010 Anders Hasselqvist. All rights reserved.
 //
 
 #import "MyClockController.h"
@@ -21,7 +21,8 @@
     [statusItem setHighlightMode:YES];
     [statusItem setMenu:theMenu];
     [statusItem setEnabled:YES];
-    [statusItem setLength:150];
+    // Let the width auto adjust
+    //    [statusItem setLength:150];
     
     [self setTimeInTitle];
 }
