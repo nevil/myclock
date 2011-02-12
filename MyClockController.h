@@ -31,4 +31,6 @@
 
 - (void)setTimeInTitle;
 
+- (void)registerNotifications;
+
 @end

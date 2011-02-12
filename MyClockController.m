@@ -23,8 +23,36 @@
     [statusItem setEnabled:YES];
     // Let the width auto adjust
     //    [statusItem setLength:150];
-    
+
+    [self registerNotifications];
     [self setTimeInTitle];
+}
+
+- (void)registerNotifications
+{
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self 
+                                                           selector: @selector(receiveSleepNote:)
+                                                               name: NSWorkspaceWillSleepNotification
+                                                             object: NULL];
+
+    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: self
+                                                           selector: @selector(receiveWakeNote:)
+                                                               name: NSWorkspaceDidWakeNotification
+                                                             object: NULL];
+}
+
+- (void) receiveSleepNote: (NSNotification*) note
+{
+    NSLog(@"receiveSleepNote: %@", [note name]);
+    [mainTimer invalidate];
+    [mainTimer release];
+}
+
+- (void) receiveWakeNote: (NSNotification*) note
+{
+    NSLog(@"receiveWakeNote: %@", [note name]);
+    [self setTimeInTitle];
+    [self timerCreate];
 }
 
 - (void)timerCreate
